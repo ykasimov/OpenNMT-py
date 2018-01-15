@@ -120,6 +120,10 @@ class Translator(object):
             inp = var(torch.stack([b.get_current_state() for b in beam])
                       .t().contiguous().view(1, -1))
 
+            test = torch.stack([b.get_current_state() for b in beam])
+
+
+
             # Turn any copied words to UNKs
             # 0 is unk
             if self.copy_attn:

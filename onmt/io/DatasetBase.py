@@ -4,7 +4,6 @@ from itertools import chain
 import torchtext
 from onmt.Utils import aeq
 
-
 PAD_WORD = '<blank>'
 UNK = 0
 BOS_WORD = '<s>'
@@ -24,6 +23,7 @@ class ONMTDatasetBase(torchtext.data.Dataset):
      `fields`: a dictionary associating str keys with `torchtext.data.Field`
         objects, and not necessarily having the same keys as the input fields.
     """
+
     def __getstate__(self):
         return self.__dict__
 
@@ -44,7 +44,7 @@ class ONMTDatasetBase(torchtext.data.Dataset):
 
         fields = load_fields_from_vocab(vocab_dict.items(), self.data_type)
         self.fields = dict([(k, f) for (k, f) in fields.items()
-                           if k in self.examples[0].__dict__])
+                            if k in self.examples[0].__dict__])
 
     @staticmethod
     def coalesce_datasets(datasets):
@@ -80,9 +80,14 @@ class ONMTDatasetBase(torchtext.data.Dataset):
         if not tokens:
             return [], [], -1
 
-        split_tokens = [token.split(u"￨") for token in tokens]
+        # for token in tokens:
+        #     print([ord(c) for c in token])
+        #     print(token.split(chr(65512)))
+        split_tokens = [token.split(chr(65512)) for token in tokens]
         split_tokens = [token for token in split_tokens if token[0]]
         token_size = len(split_tokens[0])
+
+
 
         assert all(len(token) == token_size for token in split_tokens), \
             "all words must have the same number of features"
