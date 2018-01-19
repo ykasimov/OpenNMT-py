@@ -8,6 +8,11 @@ multi-bleu.perl
 .DS_Store
 data/
 output.txt
+my_data/
+test_data/
+multi*
+parameters*
+model/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
