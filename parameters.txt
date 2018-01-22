@@ -8,3 +8,6 @@ python ./train.py -encoder_type brnn -decoder_type rnn -layers 10 -rnn_size 800 
 python ./train.py -encoder_type brnn -decoder_type rnn -layers 10 -rnn_size 800 -rnn_type GRU -data my_data/corpus -save_model model/model_1.4 -gpuid 0 -epochs 14 -optim adam -report_every 1000 -exp 2 -word_vec_size 500 -learning_rate 0.001 -global_attention mlp -input_feed 0 -brnn_merge sum |& tee output.txt
 
 python ./train.py -encoder_type brnn -decoder_type rnn -layers 4 -rnn_size 800 -rnn_type GRU -data my_data/corpus -save_model model/model_1.4 -gpuid 0 -epochs 14 -optim adam -report_every 1000 -exp 2 -word_vec_size 500 -learning_rate 0.001 -global_attention mlp -input_feed 0 -brnn_merge sum -max_grad_norm 2 |& tee output.txt
+
+
+python ./train.py -encoder_type brnn -decoder_type rnn -layers 10 -rnn_size 800 -rnn_type SRU -data my_data/corpus -save_model model/model_1.6 -gpuid 0 -epochs 14 -optim adam -report_every 1000 -exp 2 -word_vec_size 500 -learning_rate 0.001 -global_attention mlp -input_feed 0 -start_epoch 1 |& tee output.txt
